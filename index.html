@@ -1,0 +1,181 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Code Essential Web</title>
+  </head>
+  <style>
+    * {
+      /* border: 1px solid red; */
+      font-family: sans-serif;
+    }
+    :root {
+      --pc: #ffae00;
+      --bc: #282828;
+      --lb: #444444;
+    }
+    body {
+      background: var(--bc);
+      color: #fff;
+padding:2px;
+
+    }
+    .container {
+      min-width: 100%;
+      min-height: 90svh;
+      display:flex;
+flex-flow: row wrap-reverse;
+      gap: 1pc;
+    }
+    .left {
+flex-grow:1;
+      display: grid;
+    }
+    .holder {
+min-height: 80%;
+      display: flex;
+      flex-flow: column nowrap;
+      margin: 4px;
+    }
+    label {
+      font-size: large;
+      font-weight: bold;
+      padding-block: 2px;
+    }
+    textarea {
+      flex-grow: 1;
+      background: var(--lb);
+      color: #fff;
+      padding: 10px;
+      font-weight: normal;
+      font-family: "Courier New", Courier, monospace;
+      letter-spacing: 0.5px;
+      border-radius: 0.5pc;
+      font-size: larger;
+      resize: vertical;
+    }
+    .right {
+flex-grow:1;
+      background: var(--lb);
+      /* display: grid; */
+    }
+    iframe.output-area {
+      background: #fff;
+      overflow-y: auto;
+      width: 100%;
+      min-height: 100%;
+border-radius:0.5pc;
+overflow:hidden;
+    }
+    .console-area {
+      background: var(--lb);
+      color: #fff;
+      padding: 10px;
+      font-weight: normal;
+      letter-spacing: 0.5px;
+      font-size: larger;
+    }
+    nav {
+      background: var(--lb);
+      padding: 5px;
+      display: flex;
+      justify-content: space-between;
+      border: 4px solid var(--bc);
+      border-radius: 1pc;
+    }
+    .logo {
+      border-radius: 50%;
+      border: 4px solid var(--lb);
+      height: 70px;
+      width: 70px;
+    }
+    .ytlogo {
+      height: 20px;
+    }
+    .yt {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 8px;
+      padding-inline: 10px;
+      font: bold;
+    }
+    a {
+      text-decoration: none;
+      color: #fff;
+    }
+Details{
+height:100%;
+}
+    
+  </style>
+  <body>
+   <!-- <nav>
+      <img src="img1.png" class="logo" />
+      <div class="yt">
+        <img
+          src="https://upload.wikimedia.org/wikipedia/commons/e/ef/Youtube_logo.png"
+          class="ytlogo"
+        />
+        <a href="https://www.youtube.com/@CodeEssential">YouTube Channel</a>
+      </div>
+    </nav> -->
+    <div class="container">
+      <div class="left">
+<div>
+<Details open>
+ <summary><label for="html-code">HTML</label></summary>
+        <div class="holder">
+          <!-- <label for="html-code">HTML</label> -->
+          <textarea name="html" id="html-code" onkeyup="run()">
+<h1>Try to edit code in the empty fields...</h1></textarea>
+        </div>
+</Details>
+</div>
+
+<div>
+<Details open>
+ <summary><label for="css-code">CSS</label></summary>
+        <div class="holder">
+          <!-- <label for="css-code">CSS</label> -->
+          <textarea name="css" id="css-code" onkeyup="run()"></textarea>
+        </div>
+</Details>
+</div>
+<div>
+<Details open>
+ <summary><label for="css-code">JAVASCRIPT</label></summary>
+        <div class="holder">
+          <!-- <label for="css-code">JAVASCRIPT</label> -->
+          <textarea name="js" id="js-code" onkeyup="run()"></textarea>
+        </div>
+</Details>
+</div>
+      </div>
+      <div class="right">
+<div style="display:flex; padding:2px;">
+        <strong style="flex-grow:1;">Output</strong>
+<small>Made with ❤ by Abdul Sadath</small>
+</div>
+        <iframe class="output-area" style="border:none;"></iframe>
+        <!-- <div class="console-area"></div> -->
+      </div>
+    </div>
+
+    <script>
+      function run() {
+        const htmlInp = document.getElementById("html-code").value;
+        const cssInp = document.getElementById("css-code").value;
+        const jsInp = document.getElementById("js-code").value;
+        const output = document.querySelector("iframe");
+
+        output.contentDocument.body.innerHTML =
+          htmlInp + `<style>${cssInp}</style>`;
+        output.contentWindow.eval(jsInp);
+      }
+
+	window.addEventListener('load', run())
+    </script>
+  </body>
+</html>
